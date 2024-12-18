@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .print{
+            border: 2px solid black;
+            border-radius: 85px;
+            background-color:#D3C5E5;
+            height: 161px;
+            width: 164px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;  
+        }
+        body{
+            background-color:#735DA5;
+        }
+        .set{
+            border:1px solid black;
+            border-radius: 20px;
+            background-color: lightgrey;
+            margin: 10px;
+            width: 50px;
+        }
+        .dlt {
+            float:right;
+            padding-right: 12px;
+            border:1px solid black;
+            background-color: lightgrey;
+            padding-top: 12px;
+        }
+        .alarm{
+            background-color:#D3C5E5;
+            background-color: ;
+          height: 30px;
+            width: 70%;
+
+
+        }
+        .parent{
+            display:flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <div class="but">
+            <button onclick="set()" class="set">Set Alarm</button>
+        
+        </div>
+       <div class="print">
+
+       </div>
+       <!-- <audio class="tone" controls>
+       <source src="C:\Users\hp\Downloads\download-ringtone-807-funonsite-com-40938.mp3" type="audio/mpeg">
+       </audio> -->
+    </div>
+</body>
+<script>
+    // const ring=document.createElement("audio");
+    // ring.className="tone";
+  const p=document.getElementsByClassName("print")[0];
+  setInterval(myTimer, 1000);
+  var str;
+  var ele=[];
+  var array=[];
+  var val;
+  var timeId;
+function myTimer() {
+  const date = new Date();
+  str = date.toLocaleTimeString();
+  p.innerHTML=str;
+ for (const key in array) {
+    if(str==array[key]){
+    alert("alarm");
+    ele[key].remove();
+  }
+ }
+}
+// function deleteFromLocal(timeId){
+//         const string =localStorage.getItem("alarm");
+//         var obj=(string)?JSON.parse(string):{};
+//         delete obj[timeId];
+//         const StringToobj=JSON.stringify(obj);
+//         localStorage.setItem("task",StringToobj);             
+//     }
+// function savetolocal(timeId,val){
+//     const str=localStorage.getItem("Alarm");
+//     var obj=(str)?JSON.parse(str):{};
+//     obj[timeId]=val;
+//     const StringToobj=JSON.stringify(obj);
+//     localStorage.setItem("task",StringToobj);
+//     }
+
+function set(){
+    val=prompt("Enter the time in HH:MM:SS AM/PM format");
+    const a=document.createElement("div");
+    a.className="alarm";
+    a.append(val);
+    array.push(val);
+    ele.push(a);
+    const dlt =document.createElement("button");
+    dlt.innerHTML="Delete Alarm ";
+    dlt.className="dlt";
+    dlt.addEventListener("click",()=>{
+            dlt.parentElement.remove();
+    });
+    a.appendChild(dlt);
+    const par=document.getElementsByClassName("parent")[0];
+    par.append(a);
+    //timeId=Date.now();
+    // savetolocal(timeId,val);
+
+ }
+ 
+</script>
+</html>

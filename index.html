@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            background-color:#735DA5;
+        }
+        .print{
+            border: 2px solid black;
+            border-radius: 85px;
+            background-color: #D3C5E5;
+            height: 161px;
+            width: 164px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 30px;  
+        }
+        .parent{
+            display:flex;
+            justify-content: center;
+            align-items: center;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+       <div class="print">
+
+       </div>
+      
+    </div>
+</body>
+<script>
+const p=document.getElementsByClassName("print")[0];
+  setInterval(myTimer, 1000);
+  var str;
+function myTimer() {
+  const date = new Date();
+  str = date.toLocaleTimeString();
+  p.innerHTML=str;
+}
+</script>
